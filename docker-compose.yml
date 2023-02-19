@@ -1,57 +1,31 @@
-version: '3.8'
+version: "3"
 services:
-  postgres:
-    image: 'postgres:latest'
-    environment:
-      POSTGRES_PASSWORD: postgres_password
-  redis:
-    image: 'redis:latest'
-    container_name: redis
-  nginx:
-    depends_on:
-      - api
-      - client
-    restart: always
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile.dev
-    ports:
-      - '3050:80'
-  api:
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./server
-    volumes:
-      - '/usr/app/node_modules'
-      - './server:/usr/app'
-    environment:
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
-      - PG_USER=postgres
-      - PG_HOST=postgres
-      - PG_DATABASE=postgres
-      - PG_PASSWORD=postgres_password
-      - PG_PORT=5432
   client:
-    depends_on:
-      - 'redis'
+    image: "komilsobitov/multi-client"
+    mem_limit: 128m
+    hostname: client
+  server:
+    image: "komilsobitov/multi-server"
+    mem_limit: 128m
+    hostname: api
     environment:
-      - WDS_SOCKET_PORT=0
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./client
-    volumes:
-      - '/usr/app/node_modules'
-      - './client:/usr/app'
+      - REDIS_HOST=$REDIS_HOST
+      - REDIS_PORT=$REDIS_PORT
+      - PG_USER=$PG_USER
+      - PG_HOST=$PG_HOST
+      - PG_DATABASE=$PG_DATABASE
+      - PG_PASSWORD=$PG_PASSWORD
+      - PG_PORT=$PG_PORT
   worker:
-    build:
-      dockerfile: Dockerfile.dev
-      context: ./worker
-    volumes:
-      - '/usr/app/node_modules'
-      - './worker:/usr/app'
+    image: "komilsobitov/multi-worker"
+    mem_limit: 128m
+    hostname: worker
     environment:
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
+      - REDIS_HOST=$REDIS_HOST
+      - REDIS_PORT=$REDIS_PORT
+  nginx:
+    image: "komilsobitov/multi-nginx"
+    mem_limit: 128m
+    hostname: nginx
+    ports:
+      - "80:80"
