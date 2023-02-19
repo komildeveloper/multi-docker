@@ -28,4 +28,4 @@ jobs:
           context: ./nginx
           file: ./nginx/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/multi-nginx
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/multi-nginx:latest

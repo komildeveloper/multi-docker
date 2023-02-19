@@ -28,4 +28,4 @@ jobs:
           context: ./worker
           file: ./worker/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/multi-worker
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/multi-worker:latest
