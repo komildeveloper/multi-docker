@@ -14,7 +14,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Generate deployment package
-      run: zip -r multi-docker.zip . -x '*.git*'
+      run: zip -r complex.zip . -x '*.git*'
 
     - name: Get timestamp
       uses: gerred/actions/current-time@master
@@ -36,7 +36,7 @@ jobs:
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         application_name: multi-docker
         environment_name: Multidocker-env
-        version_label: 1
+        version_label: 2
         region: us-east-1
         deployment_package: multi-docker.zip
 
