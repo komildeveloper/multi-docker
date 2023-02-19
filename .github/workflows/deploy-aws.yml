@@ -34,8 +34,8 @@ jobs:
       with:
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        application_name: multi-docker
-        environment_name: Multidocker-env
+        application_name: complex
+        environment_name: Complex-env
         version_label: "complex-${{ steps.format-time.outputs.replaced }}"
         region: us-east-1
         deployment_package: complex.zip
