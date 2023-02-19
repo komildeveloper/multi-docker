@@ -1,4 +1,4 @@
-name: Build and Test Client
+name: Build and Push Client
 
 on:
   push:
