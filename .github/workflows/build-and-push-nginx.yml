@@ -26,6 +26,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./nginx
-          file: ./Dockerfile
+          file: ./nginx/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/multi-nginx

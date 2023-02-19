@@ -26,6 +26,6 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./worker
-          file: ./Dockerfile
+          file: ./worker/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/multi-worker
