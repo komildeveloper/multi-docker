@@ -2,7 +2,7 @@ FROM node:18.14-alpine
 
 WORKDIR '/usr/app'
 
-COPY package.json .
+COPY ./client/package.json .
 RUN npm i
 COPY . .
 
