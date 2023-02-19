@@ -11,11 +11,11 @@ services:
     environment:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
-      - PG_USER=$PG_USER
-      - PG_HOST=$PG_HOST
-      - PG_DATABASE=$PG_DATABASE
-      - PG_PASSWORD=$PG_PASSWORD
-      - PG_PORT=$PG_PORT
+      - PGUSER=$PGUSER
+      - PGHOST=$PGHOST
+      - PGDATABASE=$PGDATABASE
+      - PGPASSWORD=$PGPASSWORD
+      - PGPORT=$PGPORT
   worker:
     image: "komilsobitov/multi-worker"
     mem_limit: 128m
