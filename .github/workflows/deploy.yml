@@ -38,7 +38,7 @@ jobs:
         environment_name: Multidocker-env
         version_label: 2
         region: us-east-1
-        deployment_package: multi-docker.zip
+        deployment_package: complex.zip
 
     - name: Deployed
       run: echo "App Deployed to ELB"
