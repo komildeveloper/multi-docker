@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 function OtherPage () {
   return (
     <div className='container'>
-      <Link to='/' className='nav-link mt-3 outline text-primary text-center'>Go to Home</Link>
+      <Link to='/' className='nav-link mt-3 outline text-primary text-center text-medium'>Go to Home</Link>
     </div>
   )
 }
